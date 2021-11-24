@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,8 +24,25 @@ public class Fournisseur  implements Serializable {
 	private String adresseFournisseur;
 	private String numtel;
 	private String dateCreation;
-	private String categorieProduit;
+	@Enumerated(EnumType.STRING)
+	private CategorieProduit categorieProduit;
 	
+	
+	
+	public Fournisseur(long idFournisseur, String codeFournisseur, String libelleFournisseur, String adresseFournisseur,
+			String numtel, String dateCreation, CategorieProduit categorieProduit) {
+		super();
+		this.idFournisseur = idFournisseur;
+		this.codeFournisseur = codeFournisseur;
+		this.libelleFournisseur = libelleFournisseur;
+		this.adresseFournisseur = adresseFournisseur;
+		this.numtel = numtel;
+		this.dateCreation = dateCreation;
+		this.categorieProduit = categorieProduit;
+	}
+	public Fournisseur() {
+		super();
+	}
 	public long getIdFournisseur() {
 		return idFournisseur;
 	}
@@ -60,10 +79,10 @@ public class Fournisseur  implements Serializable {
 	public void setDateCreation(String dateCreation) {
 		this.dateCreation = dateCreation;
 	}
-	public String getCategorieProduit() {
+	public CategorieProduit getCategorieProduit() {
 		return categorieProduit;
 	}
-	public void setCategorieProduit(String categorieProduit) {
+	public void setCategorieProduit(CategorieProduit categorieProduit) {
 		this.categorieProduit = categorieProduit;
 	}
 	
